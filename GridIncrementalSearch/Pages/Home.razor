@@ -79,7 +79,7 @@
     private int searchStartIndex = -1;
     private CancellationTokenSource? pendingSearchCts;
 
-    public List<ColumnPickerItem> GridData { get; set; }
+    public List<ColumnPickerItem> GridData { get; set; } = new List<ColumnPickerItem>();
     private int currentSelectedIndex = -1;
     private DateTime lastKeyTime = DateTime.MinValue;
     private static readonly TimeSpan SearchBufferDelay = TimeSpan.FromMilliseconds(500);
@@ -211,6 +211,7 @@
     public void Dispose()
     {
         pendingSearchCts?.Cancel();
+        Grid = null;
     }
     protected override void OnInitialized()
     {
